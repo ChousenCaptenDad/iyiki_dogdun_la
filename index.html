@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08251f">
+
+<title>İyi ki Doğdun Atakan</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Marcellus&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow-x: hidden;
+
+    font-family: 'Baloo 2', sans-serif;
+    color: #fff5d9;
+
+    background:
+        radial-gradient(circle at 15% 15%, #286d56, transparent 35%),
+        radial-gradient(circle at 85% 85%, #9b7130, transparent 30%),
+        linear-gradient(135deg, #061f1b, #103c30, #08251f);
+}
+
+/* Geometrik İslami arka plan */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .09;
+
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0px,
+            transparent 22px,
+            #e4c47a 23px,
+            transparent 24px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent 0px,
+            transparent 22px,
+            #e4c47a 23px,
+            transparent 24px
+        );
+
+    background-size: 48px 48px;
+}
+
+/* Ana kart */
+
+.card {
+    position: relative;
+
+    width: min(1000px, 100%);
+    min-height: 650px;
+
+    padding: clamp(25px, 5vw, 55px);
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    border: 2px solid #d6b66a;
+    border-radius: 30px;
+
+    background: linear-gradient(
+        110deg,
+        #06251f 0%,
+        #103b30ed 55%,
+        #103b3070 100%
+    );
+
+    box-shadow:
+        0 25px 90px #0009,
+        inset 0 0 35px #d6b66a18;
+}
+
+/* Karakter */
+
+.character {
+    position: absolute;
+    z-index: 0;
+
+    right: -2%;
+    bottom: -2%;
+
+    height: 96%;
+    max-width: 62%;
+
+    object-fit: contain;
+    object-position: bottom right;
+
+    pointer-events: none;
+
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Yazı bölümü */
+
+.content {
+    position: relative;
+    z-index: 2;
+
+    width: 58%;
+    max-width: 580px;
+}
+
+/* Ana başlık */
+
+h1 {
+    font-family: 'Marcellus', serif;
+    font-weight: 400;
+
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 1.12;
+
+    letter-spacing: 1px;
+    margin: 25px 0;
+
+    overflow-wrap: anywhere;
+
+    background: linear-gradient(
+        180deg,
+        #fff8dd,
+        #e8ca7d,
+        #c69a42
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(0 4px 0 #573e19);
+}
+
+.name {
+    font-family: 'Marcellus', serif;
+}
+
+/* Alt başlık */
+
+.subtitle {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: #e9cd87;
+    margin-bottom: 20px;
+}
+
+/* Dini mesaj */
+
+.message {
+    padding: 18px;
+    margin-top: 22px;
+
+    border-left: 4px solid #d6b66a;
+    border-radius: 0 15px 15px 0;
+
+    background: #ffffff12;
+
+    color: #fff4d9;
+    font-size: 1.08rem;
+    line-height: 1.7;
+
+    overflow-wrap: break-word;
+}
+
+.arabic {
+    font-family: 'Amiri', serif;
+    color: #e9cd87;
+
+    font-size: 1.8rem;
+    margin-top: 18px;
+
+    text-align: center;
+}
+
+/* Butonlar */
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+
+    margin-top: 28px;
+}
+
+button {
+    border: 1px solid #e6ca81;
+    cursor: pointer;
+
+    padding: 14px 22px;
+    border-radius: 30px;
+
+    font: 800 1rem 'Baloo 2', sans-serif;
+
+    background: linear-gradient(
+        90deg,
+        #d8b568,
+        #f1dfa6
+    );
+
+    color: #173a2b;
+
+    box-shadow: 0 6px 0 #80602c;
+
+    transition: transform .2s, box-shadow .2s;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #80602c;
+}
+
+button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
+
+.party-button {
+    background: linear-gradient(
+        90deg,
+        #e6c779,
+        #fff0bd
+    );
+}
+
+.music-button {
+    background: linear-gradient(
+        90deg,
+        #145c47,
+        #258365
+    );
+
+    color: #fff1c9;
+    border-color: #d6b66a;
+    box-shadow: 0 6px 0 #083b2c;
+}
+
+.footer {
+    margin-top: 25px;
+    color: #e3ce9d;
+    font-size: 1rem;
+}
+
+/* Karakter animasyonu */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Konfeti */
+
+.confetti-piece {
+    position: fixed;
+    top: -20px;
+
+    width: 9px;
+    height: 14px;
+
+    z-index: 10;
+    pointer-events: none;
+
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* TABLET */
+
+@media (min-width: 651px) and (max-width: 900px) {
+
+    .card {
+        min-height: 580px;
+        padding: 35px;
+    }
+
+    .content {
+        width: 65%;
+    }
+
+    .character {
+        max-width: 55%;
+        height: 85%;
+    }
+
+    h1 {
+        font-size: clamp(3rem, 7vw, 4.5rem);
+    }
+}
+
+/* TELEFON */
+
+@media (max-width: 650px) {
+
+    body {
+        min-height: 100svh;
+        padding: 10px;
+        align-items: stretch;
+    }
+
+    .card {
+        width: 100%;
+        min-height: calc(100svh - 20px);
+        height: auto;
+
+        padding: 28px 20px 270px;
+
+        align-items: flex-start;
+
+        border-radius: 24px;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .character {
+        height: min(39svh, 310px);
+        max-width: 88%;
+        width: auto;
+
+        right: -2%;
+        bottom: -2%;
+    }
+
+    h1 {
+        font-size: clamp(2.7rem, 12vw, 4.3rem);
+        line-height: 1.15;
+        letter-spacing: 0;
+
+        margin: 18px 0;
+    }
+
+    .subtitle {
+        font-size: 1.05rem;
+    }
+
+    .message {
+        font-size: .98rem;
+        padding: 14px;
+        line-height: 1.6;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 22px;
+    }
+
+    button {
+        width: 100%;
+        min-height: 56px;
+        padding: 13px 12px;
+
+        font-size: 1rem;
+        touch-action: manipulation;
+    }
+
+    .arabic {
+        font-size: 1.5rem;
+    }
+
+    .footer {
+        font-size: .9rem;
+    }
+}
+
+/* KÜÇÜK TELEFONLAR */
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 7px;
+    }
+
+    .card {
+        min-height: calc(100svh - 14px);
+
+        padding: 24px 15px 235px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: clamp(2.5rem, 11.5vw, 3.3rem);
+    }
+
+    .character {
+        height: 34svh;
+        max-width: 85%;
+    }
+
+    .message {
+        font-size: .92rem;
+    }
+
+    button {
+        font-size: .95rem;
+    }
+}
+
+/* Hareket hassasiyeti */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="card">
+
+    <div class="content">
+
+        <h1>
+            İYİ Kİ<br>
+            DOĞDUN<br>
+            <span class="name">ATAKAN!</span>
+        </h1>
+
+        <p class="subtitle">
+            ☪️ Allah nice hayırlı yaşlar nasip etsin.
+        </p>
+
+        <div class="message">
+
+            Allah'ın rahmeti ve bereketi yeni yaşında da
+            seninle olsun.
+
+            Sağlık, huzur, mutluluk ve iman dolu nice
+            güzel yaşlara erişmeni dileriz.
+
+            Rabbim gönlünden geçen hayırlı dilekleri
+            nasip etsin.
+
+        </div>
+
+        <div class="arabic">
+            بَارَكَ اللَّهُ فِي عُمْرِكَ
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="party-button"
+                onclick="party()">
+
+                🎉 Partiyi Başlat
+
+            </button>
+
+            <button
+                class="music-button"
+                onclick="window.open(
+                    'https://www.youtube.com/watch?v=y9F1A81SmXI',
+                    '_blank',
+                    'noopener,noreferrer'
+                )">
+
+                🎵 Doğum Günü Şarkısını Dinle
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <img
+        class="character"
+        src="Buck.webp"
+        alt="Doğum günü maskotu">
+
+</main>
+
+<script>
+
+function party() {
+
+    const colors = [
+        '#d6b66a',
+        '#f5e4ae',
+        '#ffffff',
+        '#277d5c',
+        '#b99446',
+        '#e8ca7d'
+    ];
+
+    for (let i = 0; i < 120; i++) {
+
+        const p = document.createElement('div');
+
+        p.className = 'confetti-piece';
+
+        p.style.left = Math.random() * 100 + 'vw';
+
+        p.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        p.style.animationDelay =
+            Math.random() * 1.5 + 's';
+
+        p.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+        document.body.appendChild(p);
+
+        setTimeout(() => p.remove(), 5000);
+    }
+
+}
+
+</script>
+
+</body>
+</html>
